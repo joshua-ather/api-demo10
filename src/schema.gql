@@ -1,0 +1,48 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreatePostInput {
+  content: String!
+  title: String!
+}
+
+type MenuType {
+  _id: ID!
+  icon: String!
+  path: String!
+  roles: [String!]!
+  title: String!
+}
+
+type Mutation {
+  createPost(createPostInput: CreatePostInput!): Post!
+  removePost(id: Int!): Boolean!
+  updatePost(updatePostInput: UpdatePostInput!): Post!
+}
+
+type Post {
+  content: String!
+  id: ID!
+  title: String!
+}
+
+type Query {
+  menus: [MenuType!]!
+  post(id: Int!): Post!
+  posts: [Post!]!
+  user: UserType!
+}
+
+input UpdatePostInput {
+  content: String
+  id: Int!
+  title: String
+}
+
+type UserType {
+  _id: ID!
+  role: String!
+  status: String!
+  username: String!
+}
