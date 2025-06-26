@@ -1,23 +1,23 @@
-# Dockerfile
 FROM node:20-alpine
 
-# Set working directory
 WORKDIR /app
 
-# Copy package files
 COPY package*.json ./
 
-# Install only production dependencies
-RUN npm install --production
+# Install dependencies (bukan --production dulu, agar bisa build)
+RUN npm install
 
-# Copy project files
+# Install Nest CLI globally
+RUN npm install -g @nestjs/cli
+
+# Copy all files
 COPY . .
 
-# Build NestJS
+# Build project
 RUN npm run build
 
-# Expose NestJS port
-EXPOSE 3000
+# Install production-only deps (optional clean)
+RUN npm prune --production
 
-# Start the app
+EXPOSE 3000
 CMD ["node", "dist/main"]
