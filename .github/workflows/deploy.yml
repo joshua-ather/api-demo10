@@ -18,6 +18,7 @@ jobs:
         run: |
           echo "NODE_ENV=${{ vars.ENV_NODE_ENV }}" > .env.production
           echo "PORT=${{ vars.ENV_PORT }}" >> .env.production
+          echo "CLIENT_HOST=${{ vars.ENV_CLIENT_HOST }}" >> .env.production
           echo "JWT_SECRET=${{ secrets.ENV_JWT_SECRET }}" >> .env.production
           echo "JWT_EXPIRES_IN=${{ vars.ENV_JWT_EXPIRES_IN }}" >> .env.production
           echo "MONGO_URI=${{ vars.ENV_MONGO_URI }}" >> .env.production
